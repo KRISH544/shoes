@@ -49,7 +49,7 @@ async function main() {
       checked.push({ name: source.name, candidates: candidates.length, ok: true });
 
       for (const candidate of candidates) {
-        const matches = keywords.filter((keyword) => includesKeyword(candidate.searchText, keyword));
+        const matches = keywords.filter((keyword) => includesKeyword(candidate.matchText || candidate.searchText, keyword));
         if (!matches.length) continue;
 
         const id = candidate.id;
@@ -150,7 +150,8 @@ function parseHtml(html, source) {
       title: title || source.name || source.url,
       url: source.url,
       snippet: bodyText || description,
-      searchText: `${source.name} ${source.url} ${title} ${description} ${bodyText}`
+      searchText: `${source.name} ${source.url} ${title} ${description} ${bodyText}`,
+      matchText: `${source.name} ${source.url} ${title} ${description} ${bodyText}`
     }
   ];
 
@@ -160,15 +161,17 @@ function parseHtml(html, source) {
     if (!href) continue;
 
     const linkText = cleanText(stripTags(match[2]));
+    const linkSignalText = `${linkText} ${urlPath(href)}`;
     const searchText = `${source.name} ${href} ${linkText}`;
-    if (!releaseWords.test(searchText) && !hasAnyKeyword(searchText)) continue;
+    if (!releaseWords.test(linkSignalText) && !hasAnyKeyword(linkSignalText)) continue;
 
     candidates.push({
       id: `link:${href}:${hash(linkText || href)}`,
       title: linkText || href,
       url: href,
       snippet: source.notes || "",
-      searchText
+      searchText,
+      matchText: linkSignalText
     });
   }
 
@@ -190,10 +193,11 @@ function parseRss(xml, source) {
         title: title || source.name || source.url,
         url: absoluteUrl(link, source.url) || source.url,
         snippet: [description, pubDate].filter(Boolean).join(" "),
-        searchText: `${source.name} ${link} ${title} ${description} ${pubDate}`
+        searchText: `${source.name} ${link} ${title} ${description} ${pubDate}`,
+        matchText: `${title} ${description} ${pubDate} ${urlPath(link)}`
       };
     })
-    .filter((candidate) => releaseWords.test(candidate.searchText) || hasAnyKeyword(candidate.searchText))
+    .filter((candidate) => releaseWords.test(candidate.matchText || candidate.searchText) || hasAnyKeyword(candidate.matchText || candidate.searchText))
     .slice(0, 80);
 }
 
@@ -208,7 +212,7 @@ async function sendDiscordAlerts(alerts) {
       { name: "Matched", value: truncate(alert.matches.join(", "), 120), inline: true },
       { name: "Retailer", value: truncate(alert.source.retailer || "TBA", 120), inline: true }
     ],
-    footer: { text: "Drop Desk NZ-buyable monitor, manual checkout only" },
+    footer: { text: "Drop Desk NZ-focused monitor, manual checkout only" },
     timestamp: new Date().toISOString()
   }));
 
@@ -289,6 +293,15 @@ function absoluteUrl(href, baseUrl) {
     return new URL(href, baseUrl).toString();
   } catch {
     return null;
+  }
+}
+
+function urlPath(href) {
+  try {
+    const url = new URL(href);
+    return `${url.pathname} ${url.search}`;
+  } catch {
+    return href;
   }
 }
 

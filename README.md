@@ -72,7 +72,7 @@ npm run cron
 
 The Discord monitor is tuned for Travis Scott Nike/Jordan releases first, then a smaller set of highly anticipated collaborations such as Nike SB Dunk, Kobe Protro, Fragment, Off-White, Union, A Ma Maniere, Trophy Room, Supreme, NOCTA, Patta, and Nigel Sylvester drops.
 
-The official Travis Scott shop is not monitored by default because NZ shoe shipping is not reliably confirmable there. Add it back only if a specific drop clearly supports New Zealand delivery.
+The official Travis Scott shop is monitored for visible public page changes and drop links. It is included because you specifically want Travis Scott releases, but New Zealand shipping still needs to be checked manually when a drop goes live.
 
 ## No-Database Discord Monitor
 
@@ -87,7 +87,7 @@ For hosted 5-minute checks, push the repo to GitHub and add `DISCORD_WEBHOOK_URL
 
 See `docs/discord-monitor.md` for the full setup.
 
-The Discord monitor is filtered to NZ-buyable sources: New Zealand retailers plus END launches, which ships to New Zealand. It intentionally avoids private Discord scraping, hidden inventory endpoints, queue bypassing, checkout automation, CAPTCHA flows, and account automation.
+The Discord monitor is filtered to New Zealand retailers, END launches, and the official Travis Scott shop. It intentionally avoids private Discord scraping, hidden inventory endpoints, queue bypassing, checkout automation, CAPTCHA flows, and account automation.
 
 GitHub Actions scheduled workflows run at a shortest interval of 5 minutes. For 1-minute checks, run `npm run discord:watch` locally with `DISCORD_WEBHOOK_URL` set and keep the terminal open.
 

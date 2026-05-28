@@ -7,6 +7,14 @@ on:
         description: "Send a Discord test message"
         required: false
         default: "false"
+      send_new_source_alerts:
+        description: "Alert on current matches from newly added sources"
+        required: false
+        default: "false"
+      send_new_keyword_alerts:
+        description: "Alert on current matches from newly added keywords"
+        required: false
+        default: "false"
   schedule:
     - cron: "*/5 * * * *"
 
@@ -40,6 +48,8 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           MONITOR_STATE_PATH: .monitor-state/seen.json
           SEND_TEST_ALERT: ${{ github.event.inputs.send_test_alert || 'false' }}
+          SEND_NEW_SOURCE_ALERTS: ${{ github.event.inputs.send_new_source_alerts || 'false' }}
+          SEND_NEW_KEYWORD_ALERTS: ${{ github.event.inputs.send_new_keyword_alerts || 'false' }}
 
       - name: Save monitor state
         if: always()

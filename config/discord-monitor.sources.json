@@ -1,5 +1,12 @@
 [
   {
+    "name": "Travis Scott Official Shop",
+    "url": "https://shop.travisscott.com/",
+    "type": "html",
+    "retailer": "Travis Scott",
+    "notes": "Official public shop. Watches visible page changes and drop links; check New Zealand shipping manually."
+  },
+  {
     "name": "Nike NZ SNKRS Upcoming",
     "url": "https://www.nike.com/nz/launch?s=upcoming",
     "type": "html",

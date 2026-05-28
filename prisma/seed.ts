@@ -67,6 +67,14 @@ async function main() {
 
   const sources = [
     {
+      name: "Travis Scott Official Shop",
+      url: "https://shop.travisscott.com/",
+      type: SourceType.HTML,
+      retailer: "Travis Scott",
+      region: "GLOBAL",
+      notes: "Official public shop. Watches visible page changes and drop links; check New Zealand shipping manually."
+    },
+    {
       name: "Nike NZ SNKRS Upcoming",
       url: "https://www.nike.com/nz/launch?s=upcoming",
       type: SourceType.HTML,
