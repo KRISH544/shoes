@@ -11,7 +11,9 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:seed": "prisma db seed",
     "scan": "tsx src/scripts/scan.ts",
-    "cron": "tsx src/scripts/cron.ts"
+    "cron": "tsx src/scripts/cron.ts",
+    "discord:monitor": "node scripts/discord-monitor.mjs",
+    "discord:watch": "node scripts/discord-watch.mjs"
   },
   "dependencies": {
     "@prisma/client": "6.19.3",

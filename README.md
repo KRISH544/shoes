@@ -83,11 +83,13 @@ $env:DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/..."
 node scripts/discord-monitor.mjs
 ```
 
-For hosted 15-minute checks, push the repo to GitHub and add `DISCORD_WEBHOOK_URL` as an Actions secret. The workflow at `.github/workflows/discord-monitor.yml` will post matching releases into Discord.
+For hosted 5-minute checks, push the repo to GitHub and add `DISCORD_WEBHOOK_URL` as an Actions secret. The workflow at `.github/workflows/discord-monitor.yml` will post matching releases into Discord.
 
 See `docs/discord-monitor.md` for the full setup.
 
 The Discord monitor includes a public source bundle covering sneaker news feeds, release calendars, official launch pages, and raffle pages. It intentionally avoids private Discord scraping, hidden inventory endpoints, queue bypassing, checkout automation, CAPTCHA flows, and account automation.
+
+GitHub Actions scheduled workflows run at a shortest interval of 5 minutes. For 1-minute checks, run `npm run discord:watch` locally with `DISCORD_WEBHOOK_URL` set and keep the terminal open.
 
 For hosted cron, call:
 

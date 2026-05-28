@@ -47,7 +47,20 @@ node scripts/discord-monitor.mjs
 4. Open the `Actions` tab.
 5. Enable and run `Discord Sneaker Monitor`.
 
-The workflow in `.github/workflows/discord-monitor.yml` runs every 15 minutes and stores duplicate-prevention state in GitHub Actions cache.
+The workflow in `.github/workflows/discord-monitor.yml` runs every 5 minutes and stores duplicate-prevention state in GitHub Actions cache. GitHub Actions does not support a one-minute hosted schedule.
+
+To send a one-off Discord test from GitHub, manually run the workflow and set `send_test_alert` to `true`.
+
+## Run Every 1 Minute On Your PC
+
+If your PC is on and connected, you can run the local watcher every minute:
+
+```powershell
+$env:DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/..."
+npm run discord:watch
+```
+
+Keep that terminal open. Close the terminal to stop the watcher.
 
 ## Edit Keywords
 

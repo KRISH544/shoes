@@ -10,12 +10,21 @@ const statePath = resolve(rootDir, process.env.MONITOR_STATE_PATH || ".monitor-s
 const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
 const sendInitialAlerts = process.env.SEND_INITIAL_ALERTS === "true";
 const sendNewSourceAlerts = process.env.SEND_NEW_SOURCE_ALERTS === "true";
+const sendTestAlert = process.env.SEND_TEST_ALERT === "true";
 
 const releaseWords =
   /\b(travis|cactus|jumpman|jordan|nike|snkrs|raffle|draw|release|restock|drop|dunk|sb|shoe|sneaker|low|high|retro)\b/i;
 
 async function main() {
   const [sources, keywords, state] = await Promise.all([readJson(sourcePath, []), readJson(keywordPath, []), readJson(statePath, null)]);
+
+  if (sendTestAlert) {
+    if (!webhookUrl) throw new Error("SEND_TEST_ALERT is true, but DISCORD_WEBHOOK_URL is not set.");
+    await postDiscord({
+      username: "Drop Desk",
+      content: "Drop Desk test: Discord webhook is connected. Real release alerts only post when a new public match appears."
+    });
+  }
 
   if (!Array.isArray(sources) || !sources.length) {
     throw new Error(`No sources found at ${sourcePath}`);
@@ -74,6 +83,7 @@ async function main() {
         checked: checked.length,
         alerts: alerts.length,
         firstRun,
+        testAlertSent: sendTestAlert && Boolean(webhookUrl),
         sentToDiscord: Boolean(alerts.length && webhookUrl),
         statePath
       },
