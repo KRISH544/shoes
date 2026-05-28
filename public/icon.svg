@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Sneaker tracker icon">
+  <rect width="64" height="64" rx="14" fill="oklch(96% 0.01 88)" />
+  <path d="M12 40c8 2 19 2 35-4 2-1 5 0 6 3l2 5c1 3-1 6-4 6H18c-5 0-8-4-6-10Z" fill="oklch(27% 0.035 175)" />
+  <path d="M18 31c6 5 13 7 24 4l6-2c2-1 4 0 5 2l1 2c-15 6-28 8-42 5 1-5 2-8 6-11Z" fill="oklch(67% 0.14 153)" />
+  <path d="M22 30h12m-8-4h10" stroke="oklch(96% 0.01 88)" stroke-width="3" stroke-linecap="round" />
+</svg>

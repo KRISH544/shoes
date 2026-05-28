@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Travis Scott Shop",
+    "url": "https://shop.travisscott.com/",
+    "type": "html",
+    "retailer": "Travis Scott",
+    "notes": "Official public shop. If password protected, the monitor only sees the coming-soon page."
+  },
+  {
+    "name": "Nike SNKRS Upcoming",
+    "url": "https://www.nike.com/launch?s=upcoming",
+    "type": "html",
+    "retailer": "Nike SNKRS"
+  },
+  {
+    "name": "Sneaker News RSS",
+    "url": "https://sneakernews.com/feed/",
+    "type": "rss",
+    "retailer": "Sneaker News"
+  },
+  {
+    "name": "Sneaker News Release Dates",
+    "url": "https://sneakernews.com/release-dates/",
+    "type": "html",
+    "retailer": "Sneaker News"
+  },
+  {
+    "name": "Nice Kicks Release Dates",
+    "url": "https://www.nicekicks.com/sneaker-release-dates/",
+    "type": "html",
+    "retailer": "Nice Kicks"
+  },
+  {
+    "name": "KicksOnFire Release Dates",
+    "url": "https://www.kicksonfire.com/release-dates/",
+    "type": "html",
+    "retailer": "KicksOnFire"
+  }
+]

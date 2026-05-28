@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: sneaker-release-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: sneaker_tracker
+      POSTGRES_USER: sneaker
+      POSTGRES_PASSWORD: sneaker
+    ports:
+      - "5432:5432"
+    volumes:
+      - sneaker_release_pg:/var/lib/postgresql/data
+
+volumes:
+  sneaker_release_pg:

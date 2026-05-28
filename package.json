@@ -1,0 +1,47 @@
+{
+  "name": "sneaker-release-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "prisma db seed",
+    "scan": "tsx src/scripts/scan.ts",
+    "cron": "tsx src/scripts/cron.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "6.19.3",
+    "@sendgrid/mail": "latest",
+    "cheerio": "latest",
+    "date-fns": "latest",
+    "ics": "latest",
+    "lucide-react": "latest",
+    "next": "latest",
+    "node-cron": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "rss-parser": "latest",
+    "twilio": "latest",
+    "web-push": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/web-push": "latest",
+    "dotenv": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "prisma": "6.19.3",
+    "tsx": "latest",
+    "typescript": "latest"
+  },
+  "overrides": {
+    "postcss": "^8.5.10"
+  }
+}
