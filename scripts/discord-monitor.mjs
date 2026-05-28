@@ -13,7 +13,7 @@ const sendNewSourceAlerts = process.env.SEND_NEW_SOURCE_ALERTS === "true";
 const sendTestAlert = process.env.SEND_TEST_ALERT === "true";
 
 const releaseWords =
-  /\b(travis|cactus|jumpman|jordan|nike|snkrs|raffle|draw|release|restock|drop|dunk|sb|shoe|sneaker|low|high|retro)\b/i;
+  /\b(travis|cactus|jumpman|jordan|nike|snkrs|raffle|draw|release|restock|drop|dunk|sb|shoe|sneaker|low|high|retro|limited|launch|launching|coming soon|new arrival|register|entries close)\b/i;
 
 async function main() {
   const [sources, keywords, state] = await Promise.all([readJson(sourcePath, []), readJson(keywordPath, []), readJson(statePath, null)]);
@@ -107,16 +107,19 @@ async function fetchCandidates(source) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 15000);
 
-  const response = await fetch(source.url, {
-    signal: controller.signal,
-    redirect: "follow",
-    headers: {
-      "User-Agent": "DropDeskDiscordMonitor/0.1 public-page-monitor",
-      Accept: source.type === "rss" ? "application/rss+xml, application/xml, text/xml" : "text/html,application/xhtml+xml"
-    }
-  });
-
   try {
+    const response = await fetch(source.url, {
+      signal: controller.signal,
+      redirect: "follow",
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125 Safari/537.36 DropDesk/0.1",
+        Accept: source.type === "rss" ? "application/rss+xml, application/xml, text/xml" : "text/html,application/xhtml+xml",
+        "Accept-Language": "en-NZ,en;q=0.9",
+        "Cache-Control": "no-cache"
+      }
+    });
+
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const text = await response.text();
@@ -198,7 +201,7 @@ async function sendDiscordAlerts(alerts) {
       { name: "Matched", value: truncate(alert.matches.join(", "), 120), inline: true },
       { name: "Retailer", value: truncate(alert.source.retailer || "TBA", 120), inline: true }
     ],
-    footer: { text: "Drop Desk monitor, manual checkout only" },
+    footer: { text: "Drop Desk NZ-buyable monitor, manual checkout only" },
     timestamp: new Date().toISOString()
   }));
 

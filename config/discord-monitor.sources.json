@@ -1,117 +1,100 @@
 [
   {
-    "name": "Travis Scott Shop",
-    "url": "https://shop.travisscott.com/",
+    "name": "Nike NZ SNKRS Upcoming",
+    "url": "https://www.nike.com/nz/launch?s=upcoming",
     "type": "html",
-    "retailer": "Travis Scott",
-    "notes": "Official public shop. If password protected, the monitor only sees the coming-soon page."
+    "retailer": "Nike New Zealand",
+    "notes": "Nike New Zealand launch page."
   },
   {
-    "name": "Nike SNKRS Upcoming",
-    "url": "https://www.nike.com/launch?s=upcoming",
+    "name": "Nike NZ New & Upcoming Drops",
+    "url": "https://www.nike.com/nz/w/new-upcoming-drops-k0gk",
     "type": "html",
-    "retailer": "Nike SNKRS"
+    "retailer": "Nike New Zealand",
+    "notes": "Nike New Zealand product drops."
   },
   {
-    "name": "Sneaker News RSS",
-    "url": "https://sneakernews.com/feed/",
-    "type": "rss",
-    "retailer": "Sneaker News"
-  },
-  {
-    "name": "Nice Kicks RSS",
-    "url": "https://www.nicekicks.com/feed/",
-    "type": "rss",
-    "retailer": "Nice Kicks"
-  },
-  {
-    "name": "KicksOnFire RSS",
-    "url": "https://www.kicksonfire.com/feed/",
-    "type": "rss",
-    "retailer": "KicksOnFire"
-  },
-  {
-    "name": "Sneaker Bar Detroit RSS",
-    "url": "https://sneakerbardetroit.com/feed/",
-    "type": "rss",
-    "retailer": "Sneaker Bar Detroit"
-  },
-  {
-    "name": "JustFreshKicks RSS",
-    "url": "https://justfreshkicks.com/feed/",
-    "type": "rss",
-    "retailer": "JustFreshKicks"
-  },
-  {
-    "name": "Sneaker Files RSS",
-    "url": "https://www.sneakerfiles.com/feed/",
-    "type": "rss",
-    "retailer": "Sneaker Files"
-  },
-  {
-    "name": "Sneaker News Release Dates",
-    "url": "https://sneakernews.com/release-dates/",
+    "name": "Loaded NZ Releases",
+    "url": "https://loadednz.com/collections/releases",
     "type": "html",
-    "retailer": "Sneaker News"
+    "retailer": "Loaded NZ",
+    "notes": "New Zealand retailer. Special release rules apply."
   },
   {
-    "name": "Nice Kicks Release Dates",
-    "url": "https://www.nicekicks.com/sneaker-release-dates/",
+    "name": "Loaded NZ Home",
+    "url": "https://loadednz.com/",
     "type": "html",
-    "retailer": "Nice Kicks"
+    "retailer": "Loaded NZ",
+    "notes": "New Zealand retailer. Useful for homepage raffle banners."
   },
   {
-    "name": "KicksOnFire Release Dates",
-    "url": "https://www.kicksonfire.com/release-dates/",
+    "name": "SUBTYPE NZ Raffles & Releases",
+    "url": "https://www.subtypestore.com/nz/categories/raffles",
     "type": "html",
-    "retailer": "KicksOnFire"
+    "retailer": "SUBTYPE New Zealand",
+    "notes": "New Zealand raffle and release page."
   },
   {
-    "name": "Sneaker Bar Detroit Release Dates",
-    "url": "https://sneakerbardetroit.com/release-dates/",
+    "name": "JD Sports NZ Launches",
+    "url": "https://www.jdsports.co.nz/campaign/Launch/?facet-availability=launch",
     "type": "html",
-    "retailer": "Sneaker Bar Detroit"
+    "retailer": "JD Sports New Zealand",
+    "notes": "New Zealand launch products."
   },
   {
-    "name": "Sneaker Files Release Dates",
-    "url": "https://www.sneakerfiles.com/release-dates/",
+    "name": "JD Sports NZ Launch Hub",
+    "url": "https://www.jdsports.co.nz/page/launch-hub/",
     "type": "html",
-    "retailer": "Sneaker Files"
+    "retailer": "JD Sports New Zealand",
+    "notes": "New Zealand launch information."
   },
   {
-    "name": "House of Heat Release Dates",
-    "url": "https://houseofheat.co/sneaker-release-dates/",
+    "name": "JD Sports NZ Launch Blog",
+    "url": "https://blog.jdsports.co.nz/category/launches/",
     "type": "html",
-    "retailer": "House of Heat"
+    "retailer": "JD Sports New Zealand",
+    "notes": "New Zealand launch announcements."
   },
   {
-    "name": "Sole Retriever Release Dates",
-    "url": "https://www.soleretriever.com/sneaker-release-dates",
+    "name": "Hype DC NZ Limited Releases",
+    "url": "https://www.hypedc.com/nz/categories/new/limited-release",
     "type": "html",
-    "retailer": "Sole Retriever"
+    "retailer": "Hype DC New Zealand",
+    "notes": "New Zealand limited releases."
   },
   {
-    "name": "END Launches",
+    "name": "Hype DC NZ New Arrivals",
+    "url": "https://www.hypedc.com/nz/categories/new",
+    "type": "html",
+    "retailer": "Hype DC New Zealand",
+    "notes": "New Zealand new arrivals and restocks."
+  },
+  {
+    "name": "Foot Locker NZ New Arrivals",
+    "url": "https://www.footlocker.co.nz/en/category/collection/new-arrivals",
+    "type": "html",
+    "retailer": "Foot Locker New Zealand",
+    "notes": "New Zealand new arrivals."
+  },
+  {
+    "name": "Foot Locker NZ Jordan",
+    "url": "https://www.footlocker.co.nz/en/category/brands/jordan",
+    "type": "html",
+    "retailer": "Foot Locker New Zealand",
+    "notes": "New Zealand Jordan products."
+  },
+  {
+    "name": "Foot Locker NZ Nike",
+    "url": "https://www.footlocker.co.nz/en/category/brands/nike",
+    "type": "html",
+    "retailer": "Foot Locker New Zealand",
+    "notes": "New Zealand Nike products."
+  },
+  {
+    "name": "END Launches NZ Delivery",
     "url": "https://launches.endclothing.com/",
     "type": "html",
-    "retailer": "END"
-  },
-  {
-    "name": "SNS Launches",
-    "url": "https://www.sneakersnstuff.com/en/launches",
-    "type": "html",
-    "retailer": "Sneakersnstuff"
-  },
-  {
-    "name": "A Ma Maniere Releases",
-    "url": "https://www.a-ma-maniere.com/pages/releases",
-    "type": "html",
-    "retailer": "A Ma Maniere"
-  },
-  {
-    "name": "Feature Raffles",
-    "url": "https://feature.com/pages/raffles",
-    "type": "html",
-    "retailer": "Feature"
+    "retailer": "END",
+    "notes": "Ships to New Zealand from the UK. Duties and taxes may apply."
   }
 ]

@@ -1,6 +1,6 @@
 # Discord Sneaker Monitor
 
-This is the lightweight version of Drop Desk. It does not need PostgreSQL, Docker, SendGrid, Twilio, or the Next.js app. It checks public pages and RSS feeds, matches your keywords, and posts alerts to a Discord channel through a webhook.
+This is the lightweight version of Drop Desk. It does not need PostgreSQL, Docker, SendGrid, Twilio, or the Next.js app. It checks NZ-buyable public pages, matches your keywords, and posts alerts to a Discord channel through a webhook.
 
 It is not a checkout bot. It does not cart products, bypass queues, solve CAPTCHA, create accounts, enter raffles, or purchase anything.
 
@@ -82,24 +82,14 @@ Good Travis terms:
 
 Update `config/discord-monitor.sources.json`.
 
-The official Travis Scott shop is already included:
+The default source bundle is NZ-focused: Nike NZ, Loaded NZ, SUBTYPE NZ, JD Sports NZ, Hype DC NZ, Foot Locker NZ, and END launches because END has a New Zealand delivery page. US-only sneaker news calendars and retailer pages are excluded.
 
-```json
-{
-  "name": "Travis Scott Shop",
-  "url": "https://shop.travisscott.com/",
-  "type": "html",
-  "retailer": "Travis Scott"
-}
-```
-
-If the page is password protected, the monitor only sees the public coming-soon page. It can detect visible page changes, but it cannot see hidden products.
-
-The default source bundle also includes public sneaker news feeds, release calendars, and official launch or raffle pages. Newly added sources are bootstrapped silently by default so Discord does not get spammed with old posts. To intentionally alert on everything from a new source, set `SEND_NEW_SOURCE_ALERTS=true` for one run.
+Newly added sources are bootstrapped silently by default so Discord does not get spammed with old posts. To intentionally alert on everything from a new source, set `SEND_NEW_SOURCE_ALERTS=true` for one run.
 
 ## What This Cannot Monitor
 
 - Private Discord servers or paid cook-group channels unless you own them and add a legitimate webhook/source.
 - Password-protected shop inventory.
+- US-only release calendars and retailers that do not clearly support NZ purchasing.
 - Hidden Shopify endpoints, bot APIs, carts, queues, or CAPTCHA flows.
 - Anything that requires logging into someone else's account or bypassing access controls.

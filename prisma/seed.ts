@@ -23,7 +23,7 @@ async function main() {
     }
   });
 
-  const keywords = ["Travis Scott", "Cactus Jack", "Jordan 1", "Nike SB"];
+  const keywords = ["Travis Scott", "Cactus Jack", "CJ1", "T-Rexx", "Jumpman Jack", "Jordan 1", "Air Jordan 1 Low OG", "Nike SB"];
   for (const text of keywords) {
     await prisma.keyword.upsert({
       where: {
@@ -43,60 +43,84 @@ async function main() {
 
   const sources = [
     {
-      name: "Travis Scott Shop",
-      url: "https://shop.travisscott.com/",
+      name: "Nike NZ SNKRS Upcoming",
+      url: "https://www.nike.com/nz/launch?s=upcoming",
       type: SourceType.HTML,
-      retailer: "Travis Scott",
-      region: "US",
-      notes: "Official public shop and coming-soon page. Manual checkout only."
+      retailer: "Nike New Zealand",
+      region: "NZ",
+      notes: "Nike New Zealand launch page. Manual checkout only."
     },
     {
-      name: "Nike SNKRS Upcoming",
-      url: "https://www.nike.com/launch?s=upcoming",
+      name: "Nike NZ New & Upcoming Drops",
+      url: "https://www.nike.com/nz/w/new-upcoming-drops-k0gk",
       type: SourceType.HTML,
-      retailer: "Nike SNKRS",
-      region: "US",
-      notes: "Public Nike launch page. No login or cart actions."
+      retailer: "Nike New Zealand",
+      region: "NZ",
+      notes: "Nike New Zealand product drops. Manual checkout only."
     },
     {
-      name: "Sneaker News Release Dates",
-      url: "https://sneakernews.com/release-dates/",
+      name: "Loaded NZ Releases",
+      url: "https://loadednz.com/collections/releases",
       type: SourceType.HTML,
-      retailer: "Sneaker News",
-      region: "US",
-      notes: "Public sneaker release calendar."
+      retailer: "Loaded NZ",
+      region: "NZ",
+      notes: "New Zealand retailer. Special release rules apply."
     },
     {
-      name: "Sneaker News RSS",
-      url: "https://sneakernews.com/feed/",
-      type: SourceType.RSS,
-      retailer: "Sneaker News",
-      region: "US",
-      notes: "Public sneaker news feed."
+      name: "Loaded NZ Home",
+      url: "https://loadednz.com/",
+      type: SourceType.HTML,
+      retailer: "Loaded NZ",
+      region: "NZ",
+      notes: "New Zealand retailer homepage for raffle banners."
     },
     {
-      name: "Nice Kicks Release Dates",
-      url: "https://www.nicekicks.com/sneaker-release-dates/",
+      name: "SUBTYPE NZ Raffles & Releases",
+      url: "https://www.subtypestore.com/nz/categories/raffles",
       type: SourceType.HTML,
-      retailer: "Nice Kicks",
-      region: "US",
-      notes: "Public release dates page."
+      retailer: "SUBTYPE New Zealand",
+      region: "NZ",
+      notes: "New Zealand raffle and release page."
     },
     {
-      name: "KicksOnFire Release Dates",
-      url: "https://www.kicksonfire.com/release-dates/",
+      name: "JD Sports NZ Launches",
+      url: "https://www.jdsports.co.nz/campaign/Launch/?facet-availability=launch",
       type: SourceType.HTML,
-      retailer: "KicksOnFire",
-      region: "US",
-      notes: "Public release dates page."
+      retailer: "JD Sports New Zealand",
+      region: "NZ",
+      notes: "New Zealand launch products."
     },
     {
-      name: "Foot Locker Release Calendar",
-      url: "https://www.footlocker.com/release-dates",
+      name: "JD Sports NZ Launch Hub",
+      url: "https://www.jdsports.co.nz/page/launch-hub/",
       type: SourceType.HTML,
-      retailer: "Foot Locker",
-      region: "US",
-      notes: "Public release calendar. Manual checkout only."
+      retailer: "JD Sports New Zealand",
+      region: "NZ",
+      notes: "New Zealand launch information."
+    },
+    {
+      name: "Hype DC NZ Limited Releases",
+      url: "https://www.hypedc.com/nz/categories/new/limited-release",
+      type: SourceType.HTML,
+      retailer: "Hype DC New Zealand",
+      region: "NZ",
+      notes: "New Zealand limited releases."
+    },
+    {
+      name: "Foot Locker NZ New Arrivals",
+      url: "https://www.footlocker.co.nz/en/category/collection/new-arrivals",
+      type: SourceType.HTML,
+      retailer: "Foot Locker New Zealand",
+      region: "NZ",
+      notes: "New Zealand new arrivals."
+    },
+    {
+      name: "END Launches NZ Delivery",
+      url: "https://launches.endclothing.com/",
+      type: SourceType.HTML,
+      retailer: "END",
+      region: "NZ",
+      notes: "Ships to New Zealand from the UK. Duties and taxes may apply."
     }
   ];
 
