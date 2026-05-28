@@ -81,3 +81,12 @@ The official Travis Scott shop is already included:
 ```
 
 If the page is password protected, the monitor only sees the public coming-soon page. It can detect visible page changes, but it cannot see hidden products.
+
+The default source bundle also includes public sneaker news feeds, release calendars, and official launch or raffle pages. Newly added sources are bootstrapped silently by default so Discord does not get spammed with old posts. To intentionally alert on everything from a new source, set `SEND_NEW_SOURCE_ALERTS=true` for one run.
+
+## What This Cannot Monitor
+
+- Private Discord servers or paid cook-group channels unless you own them and add a legitimate webhook/source.
+- Password-protected shop inventory.
+- Hidden Shopify endpoints, bot APIs, carts, queues, or CAPTCHA flows.
+- Anything that requires logging into someone else's account or bypassing access controls.

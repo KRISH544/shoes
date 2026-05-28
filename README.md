@@ -87,6 +87,8 @@ For hosted 15-minute checks, push the repo to GitHub and add `DISCORD_WEBHOOK_UR
 
 See `docs/discord-monitor.md` for the full setup.
 
+The Discord monitor includes a public source bundle covering sneaker news feeds, release calendars, official launch pages, and raffle pages. It intentionally avoids private Discord scraping, hidden inventory endpoints, queue bypassing, checkout automation, CAPTCHA flows, and account automation.
+
 For hosted cron, call:
 
 ```text

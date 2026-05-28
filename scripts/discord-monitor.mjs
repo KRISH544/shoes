@@ -9,6 +9,7 @@ const keywordPath = resolve(rootDir, process.env.MONITOR_KEYWORDS_PATH || "confi
 const statePath = resolve(rootDir, process.env.MONITOR_STATE_PATH || ".monitor-state/seen.json");
 const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
 const sendInitialAlerts = process.env.SEND_INITIAL_ALERTS === "true";
+const sendNewSourceAlerts = process.env.SEND_NEW_SOURCE_ALERTS === "true";
 
 const releaseWords =
   /\b(travis|cactus|jumpman|jordan|nike|snkrs|raffle|draw|release|restock|drop|dunk|sb|shoe|sneaker|low|high|retro)\b/i;
@@ -24,11 +25,13 @@ async function main() {
   }
 
   const seen = new Set(state?.seen || []);
+  const previousSources = new Set(state?.sourceUrls || []);
   const firstRun = state === null;
   const alerts = [];
   const checked = [];
 
   for (const source of sources) {
+    const newSource = !previousSources.has(source.url);
     try {
       const candidates = await fetchCandidates(source);
       checked.push({ name: source.name, candidates: candidates.length, ok: true });
@@ -41,7 +44,7 @@ async function main() {
         const isNew = !seen.has(id);
         seen.add(id);
 
-        if (isNew && (!firstRun || sendInitialAlerts)) {
+        if (isNew && shouldAlert({ firstRun, newSource })) {
           alerts.push({ ...candidate, matches, source });
         }
       }
@@ -56,6 +59,7 @@ async function main() {
 
   await saveJson(statePath, {
     updatedAt: new Date().toISOString(),
+    sourceUrls: sources.map((source) => source.url),
     seen: [...seen].slice(-4000),
     checked
   });
@@ -83,8 +87,18 @@ async function main() {
   }
 }
 
+function shouldAlert({ firstRun, newSource }) {
+  if (firstRun) return sendInitialAlerts;
+  if (newSource) return sendNewSourceAlerts;
+  return true;
+}
+
 async function fetchCandidates(source) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
+
   const response = await fetch(source.url, {
+    signal: controller.signal,
     redirect: "follow",
     headers: {
       "User-Agent": "DropDeskDiscordMonitor/0.1 public-page-monitor",
@@ -92,10 +106,14 @@ async function fetchCandidates(source) {
     }
   });
 
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  try {
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-  const text = await response.text();
-  return source.type === "rss" ? parseRss(text, source) : parseHtml(text, source);
+    const text = await response.text();
+    return source.type === "rss" ? parseRss(text, source) : parseHtml(text, source);
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 function parseHtml(html, source) {

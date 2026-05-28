@@ -19,6 +19,36 @@
     "retailer": "Sneaker News"
   },
   {
+    "name": "Nice Kicks RSS",
+    "url": "https://www.nicekicks.com/feed/",
+    "type": "rss",
+    "retailer": "Nice Kicks"
+  },
+  {
+    "name": "KicksOnFire RSS",
+    "url": "https://www.kicksonfire.com/feed/",
+    "type": "rss",
+    "retailer": "KicksOnFire"
+  },
+  {
+    "name": "Sneaker Bar Detroit RSS",
+    "url": "https://sneakerbardetroit.com/feed/",
+    "type": "rss",
+    "retailer": "Sneaker Bar Detroit"
+  },
+  {
+    "name": "JustFreshKicks RSS",
+    "url": "https://justfreshkicks.com/feed/",
+    "type": "rss",
+    "retailer": "JustFreshKicks"
+  },
+  {
+    "name": "Sneaker Files RSS",
+    "url": "https://www.sneakerfiles.com/feed/",
+    "type": "rss",
+    "retailer": "Sneaker Files"
+  },
+  {
     "name": "Sneaker News Release Dates",
     "url": "https://sneakernews.com/release-dates/",
     "type": "html",
@@ -35,5 +65,53 @@
     "url": "https://www.kicksonfire.com/release-dates/",
     "type": "html",
     "retailer": "KicksOnFire"
+  },
+  {
+    "name": "Sneaker Bar Detroit Release Dates",
+    "url": "https://sneakerbardetroit.com/release-dates/",
+    "type": "html",
+    "retailer": "Sneaker Bar Detroit"
+  },
+  {
+    "name": "Sneaker Files Release Dates",
+    "url": "https://www.sneakerfiles.com/release-dates/",
+    "type": "html",
+    "retailer": "Sneaker Files"
+  },
+  {
+    "name": "House of Heat Release Dates",
+    "url": "https://houseofheat.co/sneaker-release-dates/",
+    "type": "html",
+    "retailer": "House of Heat"
+  },
+  {
+    "name": "Sole Retriever Release Dates",
+    "url": "https://www.soleretriever.com/sneaker-release-dates",
+    "type": "html",
+    "retailer": "Sole Retriever"
+  },
+  {
+    "name": "END Launches",
+    "url": "https://launches.endclothing.com/",
+    "type": "html",
+    "retailer": "END"
+  },
+  {
+    "name": "SNS Launches",
+    "url": "https://www.sneakersnstuff.com/en/launches",
+    "type": "html",
+    "retailer": "Sneakersnstuff"
+  },
+  {
+    "name": "A Ma Maniere Releases",
+    "url": "https://www.a-ma-maniere.com/pages/releases",
+    "type": "html",
+    "retailer": "A Ma Maniere"
+  },
+  {
+    "name": "Feature Raffles",
+    "url": "https://feature.com/pages/raffles",
+    "type": "html",
+    "retailer": "Feature"
   }
 ]
