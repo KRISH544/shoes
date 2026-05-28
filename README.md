@@ -1,6 +1,6 @@
 # Sneaker Release Tracker
 
-A safe sneaker release monitoring app for Travis Scott, Jordan, Nike, Nike SB, and related drops. It checks public release and sneaker news pages, matches your keywords, then sends alerts and calendar reminders.
+A safe sneaker release monitoring app for Travis Scott Nike/Jordan releases and highly anticipated drops. It checks public release pages, matches your keywords, then sends alerts and calendar reminders.
 
 This is not a checkout bot. It does not automate carts, queue access, CAPTCHA solving, account creation, raffle entries, or purchasing.
 
@@ -68,11 +68,11 @@ Run the local 15-minute scanner:
 npm run cron
 ```
 
-## Using The Travis Scott Shop
+## Alert Focus
 
-The seed data includes `https://shop.travisscott.com/` as an official public source. Keep `Travis Scott` and `Cactus Jack` active as keywords, then add exact model keywords when rumors become concrete, for example `Jumpman Jack`, `Jordan 1 Low`, or a colorway name.
+The Discord monitor is tuned for Travis Scott Nike/Jordan releases first, then a smaller set of highly anticipated collaborations such as Nike SB Dunk, Kobe Protro, Fragment, Off-White, Union, A Ma Maniere, Trophy Room, Supreme, NOCTA, Patta, and Nigel Sylvester drops.
 
-If the shop is on a password or coming-soon page, the tracker can only read the public HTML that is visible without logging in. Use Nike SNKRS, official raffle pages, and sneaker news sources alongside the shop URL for release date, raffle link, price, and retailer details.
+The official Travis Scott shop is not monitored by default because NZ shoe shipping is not reliably confirmable there. Add it back only if a specific drop clearly supports New Zealand delivery.
 
 ## No-Database Discord Monitor
 

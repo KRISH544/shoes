@@ -10,6 +10,7 @@ const statePath = resolve(rootDir, process.env.MONITOR_STATE_PATH || ".monitor-s
 const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
 const sendInitialAlerts = process.env.SEND_INITIAL_ALERTS === "true";
 const sendNewSourceAlerts = process.env.SEND_NEW_SOURCE_ALERTS === "true";
+const sendNewKeywordAlerts = process.env.SEND_NEW_KEYWORD_ALERTS === "true";
 const sendTestAlert = process.env.SEND_TEST_ALERT === "true";
 
 const releaseWords =
@@ -35,7 +36,9 @@ async function main() {
 
   const seen = new Set(state?.seen || []);
   const previousSources = new Set(state?.sourceUrls || []);
+  const previousKeywords = new Set((state?.keywords || []).map(normalize));
   const firstRun = state === null;
+  const bootstrappingKeywords = state !== null && !state?.keywords;
   const alerts = [];
   const checked = [];
 
@@ -53,7 +56,9 @@ async function main() {
         const isNew = !seen.has(id);
         seen.add(id);
 
-        if (isNew && shouldAlert({ firstRun, newSource })) {
+        const newKeyword = bootstrappingKeywords || matches.some((keyword) => !previousKeywords.has(normalize(keyword)));
+
+        if (isNew && shouldAlert({ firstRun, newSource, newKeyword })) {
           alerts.push({ ...candidate, matches, source });
         }
       }
@@ -69,6 +74,7 @@ async function main() {
   await saveJson(statePath, {
     updatedAt: new Date().toISOString(),
     sourceUrls: sources.map((source) => source.url),
+    keywords,
     seen: [...seen].slice(-4000),
     checked
   });
@@ -97,9 +103,10 @@ async function main() {
   }
 }
 
-function shouldAlert({ firstRun, newSource }) {
+function shouldAlert({ firstRun, newSource, newKeyword }) {
   if (firstRun) return sendInitialAlerts;
   if (newSource) return sendNewSourceAlerts;
+  if (newKeyword) return sendNewKeywordAlerts;
   return true;
 }
 
@@ -241,7 +248,7 @@ function includesKeyword(haystack, keyword) {
 
 function hasAnyKeyword(value) {
   const lower = normalize(value);
-  return /travis|cactus|jumpman|jordan|nike|snkrs/.test(lower);
+  return /travis|cactus|jumpman|jordan|nike|snkrs|cj1|t-rexx|trexx|reverse swoosh|sb dunk|kobe|nigel|fragment|off-white|off white|union|a ma maniere|trophy room|supreme|nocta|patta/.test(lower);
 }
 
 function dedupeCandidates(candidates) {
@@ -303,7 +310,7 @@ function hash(value) {
 
 function truncate(value, maxLength) {
   const text = cleanText(value);
-  return text.length <= maxLength ? text : `${text.slice(0, maxLength - 1)}…`;
+  return text.length <= maxLength ? text : `${text.slice(0, maxLength - 3)}...`;
 }
 
 async function readJson(path, fallback) {

@@ -39,7 +39,7 @@ $env:SEND_INITIAL_ALERTS="true"
 node scripts/discord-monitor.mjs
 ```
 
-## Run Every 15 Minutes On GitHub
+## Run Every 5 Minutes On GitHub
 
 1. Push this folder to a private GitHub repo.
 2. In GitHub, go to `Settings` then `Secrets and variables` then `Actions`.
@@ -66,17 +66,36 @@ Keep that terminal open. Close the terminal to stop the watcher.
 
 Update `config/discord-monitor.keywords.json`.
 
-Good Travis terms:
+Current alert focus:
 
 ```json
 [
   "Travis Scott",
   "Cactus Jack",
+  "Travis Scott x Nike",
+  "Travis Scott x Jordan",
+  "Travis Scott x Air Jordan",
+  "CJ1",
+  "T-Rexx",
   "Jumpman Jack",
-  "Jordan 1 Low",
-  "Nike SB"
+  "Reverse Swoosh",
+  "Air Jordan 1 Low OG SP",
+  "Nike SB Dunk",
+  "SB Dunk",
+  "Kobe Protro",
+  "Nigel Sylvester",
+  "Fragment",
+  "Off-White",
+  "Union",
+  "A Ma Maniere",
+  "Trophy Room",
+  "Supreme",
+  "NOCTA",
+  "Patta"
 ]
 ```
+
+Avoid generic terms like `Jordan 1` or `Nike` unless you want many more alerts.
 
 ## Edit Sources
 
@@ -85,6 +104,8 @@ Update `config/discord-monitor.sources.json`.
 The default source bundle is NZ-focused: Nike NZ, Loaded NZ, SUBTYPE NZ, JD Sports NZ, Hype DC NZ, Foot Locker NZ, and END launches because END has a New Zealand delivery page. US-only sneaker news calendars and retailer pages are excluded.
 
 Newly added sources are bootstrapped silently by default so Discord does not get spammed with old posts. To intentionally alert on everything from a new source, set `SEND_NEW_SOURCE_ALERTS=true` for one run.
+
+Newly added keywords are also bootstrapped silently. To intentionally alert on current matches for a newly added keyword, set `SEND_NEW_KEYWORD_ALERTS=true` for one run.
 
 ## What This Cannot Monitor
 

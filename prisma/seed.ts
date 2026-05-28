@@ -23,7 +23,31 @@ async function main() {
     }
   });
 
-  const keywords = ["Travis Scott", "Cactus Jack", "CJ1", "T-Rexx", "Jumpman Jack", "Jordan 1", "Air Jordan 1 Low OG", "Nike SB"];
+  const keywords = [
+    "Travis Scott",
+    "Cactus Jack",
+    "Travis Scott x Nike",
+    "Travis Scott x Jordan",
+    "Travis Scott x Air Jordan",
+    "CJ1",
+    "T-Rexx",
+    "Jumpman Jack",
+    "Reverse Swoosh",
+    "Air Jordan 1 Low OG SP",
+    "Air Jordan 1 Low OG",
+    "Nike SB Dunk",
+    "SB Dunk",
+    "Kobe Protro",
+    "Nigel Sylvester",
+    "Fragment",
+    "Off-White",
+    "Union",
+    "A Ma Maniere",
+    "Trophy Room",
+    "Supreme",
+    "NOCTA",
+    "Patta"
+  ];
   for (const text of keywords) {
     await prisma.keyword.upsert({
       where: {
@@ -99,6 +123,14 @@ async function main() {
       notes: "New Zealand launch information."
     },
     {
+      name: "JD Sports NZ Launch Blog",
+      url: "https://blog.jdsports.co.nz/category/launches/",
+      type: SourceType.HTML,
+      retailer: "JD Sports New Zealand",
+      region: "NZ",
+      notes: "New Zealand launch announcements."
+    },
+    {
       name: "Hype DC NZ Limited Releases",
       url: "https://www.hypedc.com/nz/categories/new/limited-release",
       type: SourceType.HTML,
@@ -107,12 +139,36 @@ async function main() {
       notes: "New Zealand limited releases."
     },
     {
+      name: "Hype DC NZ New Arrivals",
+      url: "https://www.hypedc.com/nz/categories/new",
+      type: SourceType.HTML,
+      retailer: "Hype DC New Zealand",
+      region: "NZ",
+      notes: "New Zealand new arrivals and restocks."
+    },
+    {
       name: "Foot Locker NZ New Arrivals",
       url: "https://www.footlocker.co.nz/en/category/collection/new-arrivals",
       type: SourceType.HTML,
       retailer: "Foot Locker New Zealand",
       region: "NZ",
       notes: "New Zealand new arrivals."
+    },
+    {
+      name: "Foot Locker NZ Jordan",
+      url: "https://www.footlocker.co.nz/en/category/brands/jordan",
+      type: SourceType.HTML,
+      retailer: "Foot Locker New Zealand",
+      region: "NZ",
+      notes: "New Zealand Jordan products."
+    },
+    {
+      name: "Foot Locker NZ Nike",
+      url: "https://www.footlocker.co.nz/en/category/brands/nike",
+      type: SourceType.HTML,
+      retailer: "Foot Locker New Zealand",
+      region: "NZ",
+      notes: "New Zealand Nike products."
     },
     {
       name: "END Launches NZ Delivery",
